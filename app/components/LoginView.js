@@ -3,7 +3,7 @@ import { Text, SafeAreaView, StyleSheet, Image, Dimensions, KeyboardAvoidingView
 import { Form, Item, Input, Label,Button} from 'native-base';
 
 // Componentes
-//import LoadModal from '../components/Modals/LoadModal';
+import LoadModal from '../components/dialogs/LoadModal';
 
 const {width} = Dimensions.get('window');
 
@@ -13,8 +13,9 @@ const LoginView = props => {
             {Platform.OS == 'ios' && 
                 <StatusBar barStyle="dark-content" />
             }
-            <KeyboardAvoidingView keyboardVerticalOffset={ Platform.OS == 'android' && -500} behavior="padding" enabled>
-                
+            <LoadModal visible={props.load} />
+            <Image style={style.imagenBanner} source={require('../assets/img/logo_sgmi_negativo.png')} />
+            <KeyboardAvoidingView keyboardVerticalOffset={ Platform.OS == 'android' && -500} behavior="padding" enabled>    
             <Form style={style.containerForm}>
                 <Item floatingLabel style={style.itemForm} >
                     <Label style={style.labelForm} >Usuario</Label>
@@ -44,27 +45,27 @@ const style = StyleSheet.create({
     },
     imagenBanner:{
         resizeMode:'contain',
-        height:100,
+        height:200,
         marginBottom:30
     },
     containerForm:{
         width:width*0.7
     },
     itemForm:{
-        borderColor:'#2B6544',
+        borderColor:'#135B84',
         borderWidth:5,
     },
     labelForm:{
-        color:'#2B6544',
+        color:'#135B84',
         textAlign:'center',
         lineHeight:15
     },
     inputForm:{
-        color:'#2B6544',
+        color:'#135B84',
         textAlign:'center'
     },
     buttonIngresar:{
-        backgroundColor:'#2B6544',
+        backgroundColor:'#135B84',
         marginTop:70,
         width:160,
         justifyContent:'center',
@@ -78,7 +79,7 @@ const style = StyleSheet.create({
     buttonRegister:{
         fontSize:12,
         fontWeight:'900',
-        color:'#2B6544',
+        color:'#135B84',
         textAlign:'center'
     }
 });

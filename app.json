@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "SGMI-CMMS",
-    "slug": "SGMI-CMMS",
+    "name": "testExpo",
+    "slug": "testExpo",
     "platforms": [
       "ios",
       "android",

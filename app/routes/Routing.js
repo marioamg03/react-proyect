@@ -14,7 +14,7 @@ function Routing() {
     return (
       <NavigationContainer screenOptions={{gestureDirection:'horizontal'}}>
         <Stack.Navigator headerMode='none' screenOptions={{gestureDirection:'horizontal'}}>
-          <Stack.Screen name="Login" component={LoginScreen}/>
+           <Stack.Screen name="Login" component={LoginScreen}/>
           <Stack.Screen name="Home" component={HomeScreen}/>
           <Stack.Screen name="Splash" component={SplashScreen}/>
         </Stack.Navigator>
