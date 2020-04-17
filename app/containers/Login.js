@@ -69,8 +69,7 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = (state) => ({
     load : state.loadStore,
-    push : state.pushStore,
-    listAllManagement: state.listAllManagementStore
+    push : state.pushStore
 });
 
 export default connect(mapStateToProps,mapDispatchToProps)(Login)
