@@ -1,19 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 
-export default class Home extends React.Component {
+export default class Splash extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Hello from home!</Text>
-
-        <Button 
-          title="Go To Profile"
-          onPress={
-            () => this.props.navigation.navigate( 'Home' )
-          }
-        />
-    
+        <Text>Hello from Splash!</Text>
       </View>
     );
   }

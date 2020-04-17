@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { StackActions } from '@react-navigation/native';
 import LoginView from '../components/LoginView';
 
 //Redux
-import {loadAction} from '../redux/actions/Actions';
+import {loginAction, loadAction, pushAction} from '../redux/actions/Actions';
 
 class Login extends Component {
 
@@ -28,6 +29,7 @@ class Login extends Component {
     }
 
     componentWillUpdate(nextProps, nextState){
+
         if(this.props.push != nextProps.push && nextProps.push){
             this.props.handlePush(false);
             setTimeout(async () => {
@@ -54,9 +56,21 @@ class Login extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
+    handleLogin: (data) => {
+        dispatch(loginAction(data));
+    },
     handleLoad: (bool) => {
         dispatch(loadAction(bool));
+    },
+    handlePush: (bool) => {
+        dispatch(pushAction(bool))
     }
 });
 
-export default connect(mapDispatchToProps)(Login)
+const mapStateToProps = (state) => ({
+    load : state.loadStore,
+    push : state.pushStore,
+    listAllManagement: state.listAllManagementStore
+});
+
+export default connect(mapStateToProps,mapDispatchToProps)(Login)

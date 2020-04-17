@@ -1,10 +1,42 @@
 //constans 
-import storeConstans from '../../constants/store';
+import sagasConstants from '../../constants/sagas';
+import storeConstants from '../../constants/store';
 
 /**
  * Actions Generales
  */
 export const loadAction = bool => ({
-    type:storeConstans.LOAD,
+    type:storeConstants.LOAD,
     bool
 });
+
+/**
+ * Actions Login
+ */
+export const loginAction = data => ({
+    type:sagasConstants.LOGIN,
+    data
+});
+
+
+/**
+ * Actions Push
+ */
+export const pushAction = bool => ({
+    type: storeConstants.PUSH,
+    bool
+})
+
+/**
+ * Actions Login Save
+ */
+export const areasInfoAction = list => ({
+    type:storeConstans.LIST_AREAS_INFO,
+    list
+})
+
+export const instInfoAction = list => ({
+    type:storeConstans.LIST_INST_INFO,
+    list
+})
+

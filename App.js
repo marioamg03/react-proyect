@@ -1,6 +1,8 @@
 import React,{Component} from 'react';
 import { AppLoading } from 'expo';
 import {StatusBar} from 'react-native';
+import {Provider} from 'react-redux';
+import Store from './app/redux/store/Store';
 import {Root} from 'native-base';
 import Routing from './app/routes/Routing';
 import * as Font from 'expo-font';
@@ -30,6 +32,10 @@ export default class App extends Component {
       return <AppLoading />;
     }
     
-    return <Routing/>
+    return <Root>
+              <Provider store={Store}>
+                <Routing/>
+              </Provider>
+            </Root>
   }
 }
