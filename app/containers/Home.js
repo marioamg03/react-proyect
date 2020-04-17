@@ -11,8 +11,10 @@ class Home extends Component {
     constructor(props) {
         super(props);
 
+        console.log(props.listAllInstalations)
+
         this.state = {
-            list : props.listAllInstalations,
+            list : props.listAllInstalations
         }
 
     }

@@ -31,12 +31,12 @@ export const pushAction = bool => ({
  * Actions Login Save
  */
 export const areasInfoAction = list => ({
-    type:storeConstans.LIST_AREAS_INFO,
+    type:storeConstants.LIST_AREAS_INFO,
     list
 })
 
 export const instInfoAction = list => ({
-    type:storeConstans.LIST_INST_INFO,
+    type:storeConstants.LIST_INST_INFO,
     list
 })
 

@@ -204,8 +204,11 @@ function* sagaInitLoad(item){
             let listInstalaciones = body.data.instalaciones;
             let listAreas = body.data.areas;
 
-            yield call(saveData,SAVE_INDEX.LIST_INSTALACIONES.name, listInstalaciones);
-            yield call(saveData,SAVE_INDEX.LIST_AREAS.name, listAreas);
+            yield put(areasInfoAction(listAreas));
+            yield put(instInfoAction(listInstalaciones));
+        
+            yield call(saveData, SAVE_INDEX.LIST_INSTALACIONES.name, listInstalaciones);
+            yield call(saveData, SAVE_INDEX.LIST_AREAS.name, listAreas);
 
             // Prueba GUARDADO Y RECUPERACION DE DATOS.
             let data = yield call(getData,SAVE_INDEX.LIST_INSTALACIONES.name);
