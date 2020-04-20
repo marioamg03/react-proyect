@@ -56,12 +56,24 @@ const listAllInstStore = (state = [], action) => {
     }
 }
 
+const nextInstalationStore = (state = null, action) => {
+    switch(action.type){
+        case 'reset':
+            return null;
+        case storeConstants.LAST_INSTALATION:
+            return action.data;
+        default:
+            return state;
+    }
+}
+
 const reducers = combineReducers({
     //STORE GENERALES
     boolInStore,
     loadStore,
     pushStore,
-    listAllInstStore
+    listAllInstStore,
+    nextInstalationStore
 });
 
 export default  createStore(reducers, applyMiddleware(sagaMiddleware));

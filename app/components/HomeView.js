@@ -1,24 +1,24 @@
 import React from 'react';
-import { Text, SafeAreaView, StyleSheet, Dimensions,StatusBar,Platform, View} from 'react-native';
-import { Button } from 'native-base';
+import { Text, SafeAreaView, StyleSheet, Dimensions,StatusBar,Platform,FlatList, View} from 'react-native';
+
+import HeaderView from '../components/HeaderView';
+import InstalationItemView from './InstalationItemView';
 
 const {width} = Dimensions.get('window');
 
 const HomeView = props => {
-    return (
-        <SafeAreaView style={style.container}>
-            {Platform.OS == 'ios' && 
-                <StatusBar barStyle="dark-content" />
-            }
-            <View style={style.container}>
-              <Text>Hello from home!</Text>
-
-              <Button 
-                style={style.buttonIngresar}
-                title="Go To Profile"
-                onPress={() => props.goHome()}
-              />
-           </View>
+    return (<SafeAreaView style={style.container}>
+        {/** Esto es para IOS **/}
+        <View style={{backgroundColor:'#135B84',position:'absolute',width,height:60}} />
+        
+        <HeaderView title="Codelco" goBack={false}/>
+              <FlatList
+                data={props.list}
+                renderItem={({ item }) =>  <InstalationItemView item={item} updateInstalation={() => props.updateInstalation(item)}/>}
+                keyExtractor={item => item.id}
+                initialNumToRender={10}
+                ListFooterComponent={props.list.length > 0 ? <View style={{width,height:90}} /> : <Text style={style.messageCalendar}>{!props.load ? " No se encontró información para mostrar" : ""}</Text>}
+                /> 
         </SafeAreaView>
     )
 }
@@ -26,8 +26,7 @@ const HomeView = props => {
 const style = StyleSheet.create({
     container:{
         flex:1,
-        justifyContent:'center',
-        alignItems:'center'
+        backgroundColor:'#ffffff'
     },
     imagenBanner:{
         resizeMode:'contain',

@@ -18,7 +18,6 @@ class Login extends Component {
     }
 
     _login() {
-        //this.props.navigation.navigate('Home');
         if(this.state.user !== null && this.state.password !== null && this.state.user !== '' && this.state.password !== 'null' ){
             this.props.handleLoad(true);
             this.props.handleLogin({
@@ -28,7 +27,7 @@ class Login extends Component {
         }
     }
 
-    componentWillUpdate(nextProps, nextState){
+    componentWillUpdate(nextProps){
 
         if(this.props.push != nextProps.push && nextProps.push){
             this.props.handlePush(false);
@@ -38,7 +37,6 @@ class Login extends Component {
                     source: 0,
                 });
                 this.props.handleLoad(false);
-
             },500)
         }
     }
