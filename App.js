@@ -33,6 +33,7 @@ export default class App extends Component {
     }
     
     return <Root>
+              <StatusBar backgroundColor="#0475BC" barStyle="light-content" />
               <Provider store={Store}>
                 <Routing/>
               </Provider>

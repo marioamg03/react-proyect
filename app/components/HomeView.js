@@ -11,7 +11,7 @@ const HomeView = props => {
         {/** Esto es para IOS **/}
         <View style={{backgroundColor:'#135B84',position:'absolute',width,height:60}} />
         
-        <HeaderView title="Codelco" goBack={false}/>
+        <HeaderView title={props.instalationName} goBack={false}/>
               <FlatList
                 data={props.list}
                 renderItem={({ item }) =>  <InstalationItemView item={item} updateInstalation={() => props.updateInstalation(item)}/>}

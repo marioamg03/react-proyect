@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
 
 //containers
 import LoginScreen from '../containers/Login';
@@ -15,7 +15,7 @@ function Routing() {
       <NavigationContainer screenOptions={{gestureDirection:'horizontal'}}>
         <Stack.Navigator headerMode='none' screenOptions={{gestureDirection:'horizontal'}}>
            <Stack.Screen name="Login" component={LoginScreen}/>
-          <Stack.Screen name="Home" component={HomeScreen}/>
+          <Stack.Screen name="Home" component={HomeScreen} options={{cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS}}/>
           <Stack.Screen name="Splash" component={SplashScreen}/>
         </Stack.Navigator>
       </NavigationContainer>

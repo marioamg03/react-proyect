@@ -10,11 +10,8 @@ class Home extends Component {
 
     constructor(props) {
         super(props);
-
-        console.log('LA MIERDAAA   ',props.nextInstalation)
-
-
         this.state = {
+            instalationName: this._updateTitle(props),
             list : props.listAllInstalations.filter(function(filterInst) {
                 if (props.nextInstalation === null){
                     return filterInst.antes == null;
@@ -23,9 +20,19 @@ class Home extends Component {
                 }
             })
         }
+        console.log(this.state.instalationName)
 
-        console.log(this.state.list)
+
     }
+
+    _updateTitle = (props) => {
+        if (props.nextInstalation === null){
+            return 'Codelco';
+        } else {
+            return props.nextInstalation.name;
+        }
+    }
+
 
     _updateInstalation = (item) => {
         this.props.handleNextInstalation(item);
@@ -38,6 +45,7 @@ class Home extends Component {
     render() {
         return <HomeView
                     list={this.state.list}
+                    instalationName = {this.state.instalationName}
                     updateInstalation={(item) => this._updateInstalation(item)}/>
     }
 }

@@ -13,7 +13,8 @@ import {
     loadAction,
     pushAction,
     areasInfoAction,
-    instInfoAction
+    instInfoAction,
+    lastInstalationAction
 } 
 from '../actions/Actions';
 
@@ -206,14 +207,16 @@ function* sagaInitLoad(item){
 
             yield put(areasInfoAction(listAreas));
             yield put(instInfoAction(listInstalaciones));
+            yield put(lastInstalationAction(null));
+
         
             yield call(saveData, SAVE_INDEX.LIST_INSTALACIONES.name, listInstalaciones);
             yield call(saveData, SAVE_INDEX.LIST_AREAS.name, listAreas);
 
             // Prueba GUARDADO Y RECUPERACION DE DATOS.
-            let data = yield call(getData,SAVE_INDEX.LIST_INSTALACIONES.name);
-            let data2 = yield call(getData,SAVE_INDEX.LIST_AREAS.name);
-            console.log(data, data2)
+            // let data = yield call(getData,SAVE_INDEX.LIST_INSTALACIONES.name);
+            // let data2 = yield call(getData,SAVE_INDEX.LIST_AREAS.name);
+            // console.log(data, data2)
 
             if(!item.back)
                 yield put(pushAction(true));

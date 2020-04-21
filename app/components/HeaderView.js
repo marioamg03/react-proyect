@@ -37,11 +37,11 @@ const HeaderView = props => {
 const style = StyleSheet.create({
     container:{
         backgroundColor:'#135B84',
-        height:70,
+        height:60,
         width:'100%',
         paddingHorizontal:15,
         flexDirection:'row',
-        alignItems:'center',
+        alignItems: 'center',
 
         shadowColor: "#000",
         shadowOffset: {
@@ -58,11 +58,10 @@ const style = StyleSheet.create({
         justifyContent:'center',
     },
     textTitle:{
-        fontSize:17,
+        fontSize:23,
         fontWeight:'bold',
         color:'#FFFFFF',
-        marginLeft:25,
-        marginTop: 15
+        marginLeft:25
     }
 });
 
