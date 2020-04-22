@@ -27,13 +27,19 @@ class NewManagement extends Component {
     }
 
     _chkbox_check = () => {
-        var checked = this.state.chkbox_chk;
-        if(checked == true) {
-            alert("d")
-            this.state.chkbox_chk = false
-        } else {
-            this.state.chkbox_chk = true
-        }
+        // var checked = this.state.chkbox_chk;
+        // if(checked === false) {
+        //     alert("d")
+        //     this.setState({chkbox_chk:false})
+        // } else {
+        //     this.setState({chkbox_chk:true})
+        // }
+
+        this.setState({chkbox_chk:!this.state.chkbox_chk})
+
+
+
+
     } 
 
 
@@ -43,8 +49,9 @@ class NewManagement extends Component {
                     observation={this.state.observation}
                     changeTextTitle={(title) => this.setState({title})}
                     changeTextObservation={(observation) => this.setState({observation})}
+                    
                     chkbox_chk={this.state.chkbox_chk}
-                    chkbox_check={() => this._chkbox_check()}
+                    chkbox_check={this._chkbox_check}
         />
     }
 }

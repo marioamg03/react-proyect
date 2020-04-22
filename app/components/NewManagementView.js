@@ -22,7 +22,7 @@ const NewManagementView = props => {
               <Input style={style.inputForm} multiline={true} onChangeText={(observation) => props.changeTextObservation(observation)} value={props.observation}/>
           </Item>
 
-          <Item style={style.itemForm} onPress={props.chkbox_check()}>
+          <Item style={style.itemForm} onPress={props.chkbox_check}>
             <CheckBox checked={props.chkbox_chk} />
             <Text style={style.textCheckBox}>Solicito informe de aprobación previo a que se ejecute el trabajo.</Text>
           </Item>
