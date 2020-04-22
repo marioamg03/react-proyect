@@ -40,8 +40,19 @@ export const instInfoAction = list => ({
     list
 })
 
+export const equipInfoAction = list => ({
+    type:storeConstants.LIST_EQUIP_INFO,
+    list
+})
+
 export const lastInstalationAction = data => ({
     type:storeConstants.LAST_INSTALATION,
     data
 });
+
+export const lastEquipManagementAction = data => ({
+    type:storeConstants.LAST_EQUIP,
+    data
+});
+
 

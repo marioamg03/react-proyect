@@ -20,9 +20,6 @@ class Home extends Component {
                 }
             })
         }
-        console.log(this.state.instalationName)
-
-
     }
 
     _updateTitle = (props) => {
@@ -36,10 +33,20 @@ class Home extends Component {
 
     _updateInstalation = (item) => {
         this.props.handleNextInstalation(item);
-        this.props.navigation.dispatch({
-            ...StackActions.push('Home'),
-            source: 0,
-        });
+
+        if (item.final === 0) {
+            this.props.navigation.dispatch({
+                ...StackActions.push('Home'),
+                source: 0,
+            });
+        } else {
+            this.props.navigation.dispatch({
+                ...StackActions.push('EquipManagement'),
+                source: 0,
+            });
+        }
+
+
     }
 
     render() {

@@ -6,6 +6,8 @@ import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/
 import LoginScreen from '../containers/Login';
 import HomeScreen from '../containers/Home';
 import SplashScreen from '../containers/Splash';
+import NewManagement from '../containers/NewManagement';
+import EquipManagement from '../containers/EquipManagement';
 
 const Stack = createStackNavigator();
 
@@ -16,6 +18,8 @@ function Routing() {
         <Stack.Navigator headerMode='none' screenOptions={{gestureDirection:'horizontal'}}>
            <Stack.Screen name="Login" component={LoginScreen}/>
           <Stack.Screen name="Home" component={HomeScreen} options={{cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS}}/>
+          <Stack.Screen name="NewManagement" component={NewManagement} options={{cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS}}/>
+          <Stack.Screen name="EquipManagement" component={EquipManagement} options={{cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS}}/>
           <Stack.Screen name="Splash" component={SplashScreen}/>
         </Stack.Navigator>
       </NavigationContainer>

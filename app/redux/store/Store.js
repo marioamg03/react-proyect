@@ -56,6 +56,17 @@ const listAllInstStore = (state = [], action) => {
     }
 }
 
+const listAllEquipStore = (state = [], action) => {
+    switch(action.type){
+        case 'reset':
+            return [];
+        case storeConstants.LIST_EQUIP_INFO:
+            return action.list;
+        default:
+            return state;
+    }
+}
+
 const nextInstalationStore = (state = null, action) => {
     switch(action.type){
         case 'reset':
@@ -73,6 +84,7 @@ const reducers = combineReducers({
     loadStore,
     pushStore,
     listAllInstStore,
+    listAllEquipStore,
     nextInstalationStore
 });
 

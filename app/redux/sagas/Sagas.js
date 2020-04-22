@@ -14,13 +14,15 @@ import {
     pushAction,
     areasInfoAction,
     instInfoAction,
+    equipInfoAction,
     lastInstalationAction
 } 
 from '../actions/Actions';
 
 const SAVE_INDEX = {
     LIST_AREAS:{name: 'LIST_AREAS', action:areasInfoAction},
-    LIST_INSTALACIONES:{name:'LIST_INSTALACIONES',action:instInfoAction}
+    LIST_INSTALACIONES:{name:'LIST_INSTALACIONES',action:instInfoAction},
+    LIST_EQUIPOS:{name:'LIST_EQUIPOS',action:equipInfoAction}
 }
 
 const request = async (url,body,method,headers) => {
@@ -204,14 +206,16 @@ function* sagaInitLoad(item){
 
             let listInstalaciones = body.data.instalaciones;
             let listAreas = body.data.areas;
+            let listEquipos = body.data.equipos_servicios;
 
             yield put(areasInfoAction(listAreas));
             yield put(instInfoAction(listInstalaciones));
+            yield put(equipInfoAction(listEquipos));
             yield put(lastInstalationAction(null));
-
         
             yield call(saveData, SAVE_INDEX.LIST_INSTALACIONES.name, listInstalaciones);
             yield call(saveData, SAVE_INDEX.LIST_AREAS.name, listAreas);
+            yield call(saveData, SAVE_INDEX.LIST_EQUIPOS.name, listEquipos);
 
             // Prueba GUARDADO Y RECUPERACION DE DATOS.
             // let data = yield call(getData,SAVE_INDEX.LIST_INSTALACIONES.name);

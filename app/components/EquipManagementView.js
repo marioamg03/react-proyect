@@ -2,11 +2,11 @@ import React from 'react';
 import { Text, SafeAreaView, StyleSheet, Dimensions,StatusBar,Platform,FlatList, View} from 'react-native';
 
 import HeaderView from '../components/HeaderView';
-import InstalationItemView from './InstalationItemView';
+import EquipItemView from './EquipItemView';
 
 const {width} = Dimensions.get('window');
 
-const HomeView = props => {
+const EquipManagementView = props => {
     return (<SafeAreaView style={style.container}>
         {/** Esto es para IOS **/}
         <View style={{backgroundColor:'#135B84',position:'absolute',width,height:60}} />
@@ -14,10 +14,10 @@ const HomeView = props => {
         <HeaderView title={props.instalationName} goBack={false}/>
               <FlatList
                 data={props.list}
-                renderItem={({ item }) =>  <InstalationItemView item={item} updateInstalation={() => props.updateInstalation(item)}/>}
+                renderItem={({ item }) =>  <EquipItemView item={item} updateEquip={() => props.updateEquip(item)}/>}
                 keyExtractor={item => item.id}
                 initialNumToRender={10}
-                ListFooterComponent={props.list.length > 0 ? <View style={{width,height:90}} /> : <Text style={style.messageCalendar}>{!props.load ? "No hay equipos asignados a esta instalacion." : ""}</Text>}
+                ListFooterComponent={props.list.length > 0 ? <View style={{width,height:90}} /> : <Text style={style.messageCalendar}>{!props.load ? " No se encontró información para mostrar" : ""}</Text>}
                 /> 
         </SafeAreaView>
     )
@@ -66,15 +66,7 @@ const style = StyleSheet.create({
         fontWeight:'900',
         color:'#135B84',
         textAlign:'center'
-    },
-    messageCalendar:{
-        fontSize:20,
-        color:'#135B84',
-        marginTop:10,
-        fontWeight:'900',
-        marginHorizontal:5,
-        textAlign:'center'
     }
 });
 
-export default HomeView;
+export default EquipManagementView ;
