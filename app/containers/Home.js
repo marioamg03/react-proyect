@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { StackActions } from '@react-navigation/native';
+import { StackActions, StackRouter } from '@react-navigation/native';
 import HomeView from '../components/HomeView';
 
 //Redux
@@ -57,20 +57,23 @@ class Home extends Component {
         }
     }
 
-    _showAreaModal() {
+    _showAreaModal = () => {
         this.setState({showModalArea:true});
     }
 
-    _cancelModal = async () => {
+    _cancelModal = () => {
         this.setState({showModalArea:false});
     }
 
     render() {
         return <HomeView
                     load ={false}
+
                     areaView ={this.state.showModalArea}
+                    areasList = {this.props.areasInfo}
+                    updateArea={(item) => this._updateArea(item)}
                     showAreaModal = {this._showAreaModal}
-                    cancelModal = {this._cancelModal()}
+                    cancelModal = {this._cancelModal}
  
                     viewButton = {this.state.viewButton}
                     list={this.state.list}
@@ -82,7 +85,8 @@ class Home extends Component {
 // Definimos las propiedades que obtenemos del redux store
 const mapStateToProps = (state) => ({
     listAllInstalations: state.listAllInstStore,
-    nextInstalation: state.nextInstalationStore
+    nextInstalation: state.nextInstalationStore,
+    areasInfo: state.listAllAreaStore
 })
 
 // Definimos las funciones que obtenemos del redux saga

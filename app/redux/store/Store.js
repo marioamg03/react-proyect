@@ -56,6 +56,17 @@ const listAllInstStore = (state = [], action) => {
     }
 }
 
+const listAllAreaStore = (state = [], action) => {
+    switch(action.type){
+        case 'reset':
+            return [];
+        case storeConstants.LIST_AREAS_INFO:
+            return action.list;
+        default:
+            return state;
+    }
+}
+
 const listAllEquipStore = (state = [], action) => {
     switch(action.type){
         case 'reset':
@@ -121,6 +132,7 @@ const reducers = combineReducers({
     pushStore,
     listAllInstStore,
     listAllEquipStore,
+    listAllAreaStore,
     nextInstalationStore,
     backImageStore,
     lastTypeManagement,

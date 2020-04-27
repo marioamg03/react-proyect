@@ -14,7 +14,6 @@ class Login extends Component {
         this.state={
             user:null,
             password:null,
-
         }
     }
 
@@ -36,7 +35,6 @@ class Login extends Component {
     }
 
     componentWillUpdate(nextProps){
-
         if(this.props.push != nextProps.push && nextProps.push){
             this.props.handlePush(false);
             setTimeout(async () => {

@@ -25,11 +25,15 @@ const NewManagementView = props => {
           <Text style={style.textCheckBox}>Solicito informe de aprobación previo a que se ejecute el trabajo.</Text>
           
           <Item style={style.radioGroup}>
-            <Radio selected={props.chkbox_chk1} onPress={props.chkbox_check1}/>
-            <Text style={style.textCheckBox}>Si</Text>
+            <View style={{marginTop:10, justifyContent:'center',alignItems:'center',flexDirection:'row'}}>
+              <Radio selected={props.chkbox_chk1} onPress={props.chkbox_check1} />
+              <Text style={style.textCheckBox} style={{margin:0, marginLeft:20}} >Si</Text>
+            </View>
 
-            <Radio style={style.radio} selected={props.chkbox_chk2} onPress={props.chkbox_check2}/>
-            <Text style={style.textCheckBox}>No</Text>
+            <View style={{marginTop:10, justifyContent:'center',alignItems:'center',flexDirection:'row'}}>
+              <Radio style={style.radio} selected={props.chkbox_chk2} onPress={props.chkbox_check2}/>
+              <Text style={style.textCheckBox} style={{margin:0, marginLeft:20}}>No</Text>
+            </View>
           </Item>
 
           <View style={style.buttonView}>
@@ -109,8 +113,9 @@ const style = StyleSheet.create({
     fontSize:12,
   },
   textCheckBox:{
+    marginTop:25,
     marginLeft:20,
-    marginTop:40
+    marginRight: 20
   },
   iconItemPhoto:{
     fontSize:55

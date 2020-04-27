@@ -3,7 +3,7 @@ import { Text, SafeAreaView, StyleSheet, Dimensions,StatusBar,Platform,FlatList,
 
 import HeaderView from '../components/HeaderView';
 import InstalationItemView from './InstalationItemView';
-import { Icon, Button } from 'native-base';
+import { Icon, Button, TouchableOpacity } from 'native-base';
 
 // Componentes
 import AreaChangeModal from '../components/dialogs/AreaChangeModal';
@@ -12,10 +12,13 @@ import LoadModal from '../components/dialogs/LoadModal';
 const {width} = Dimensions.get('window');
 
 const HomeView = props => {
+
+    console.log(props.list)
+
     return (<SafeAreaView style={style.container}>
         {/** Esto es para IOS **/}
         <LoadModal visible={props.load} />
-        <AreaChangeModal visible={props.areaView} cancelModal={props.cancelModal}/>
+        <AreaChangeModal visible={props.areaView} cancelModal={props.cancelModal} areasList={props.areasList} updateArea={() => props.updateArea(item)}/>
 
         <View style={{backgroundColor:'#135B84',position:'absolute',width,height:60}} />
         
