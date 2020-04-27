@@ -78,6 +78,42 @@ const nextInstalationStore = (state = null, action) => {
     }
 }
 
+const lastEquipManagement = (state = null, action) => {
+    switch(action.type){
+        case 'reset':
+            return null;
+        case storeConstants.LAST_EQUIP:
+            return action.data;
+        default:
+            return state;
+    }
+}
+
+const lastTypeManagement = (state = false, action) => {
+    switch(action.type){
+        case 'reset':
+            return false;
+        case storeConstants.MANAGEMENT_TYPE:
+            return action.bool;
+        default:
+            return state
+    }
+};
+
+/**
+ * GESTIONES ANTICIPADAS
+ */
+const backImageStore = (state = null, action) => {
+    switch(action.type){
+        case 'reset':
+            return null;
+        case storeConstants.BACK_IMAGE:
+            return action.image;
+        default:
+            return state;
+    }
+}
+
 const reducers = combineReducers({
     //STORE GENERALES
     boolInStore,
@@ -85,7 +121,10 @@ const reducers = combineReducers({
     pushStore,
     listAllInstStore,
     listAllEquipStore,
-    nextInstalationStore
+    nextInstalationStore,
+    backImageStore,
+    lastTypeManagement,
+    lastEquipManagement
 });
 
 export default  createStore(reducers, applyMiddleware(sagaMiddleware));

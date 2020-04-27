@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "testExpo",
-    "slug": "testExpo",
+    "name": "SGMI",
+    "slug": "SGMI",
     "platforms": [
       "ios",
       "android",
@@ -9,10 +9,10 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/logo_sgmi_negativo.png",
     "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
+      "image": "./assets/logo_sgmi_negativo.png",
+      "resizeMode": "center",
       "backgroundColor": "#ffffff"
     },
     "updates": {

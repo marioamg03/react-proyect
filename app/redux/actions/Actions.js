@@ -18,6 +18,13 @@ export const loginAction = data => ({
     data
 });
 
+/**
+ * Actions SendData
+ */
+export const sendDataAction = data => ({
+    type:sagasConstants.SENDDATA_REACT,
+    data
+});
 
 /**
  * Actions Push
@@ -53,6 +60,21 @@ export const lastInstalationAction = data => ({
 export const lastEquipManagementAction = data => ({
     type:storeConstants.LAST_EQUIP,
     data
+});
+
+//Si el tipo de gestion es de instalacion o equipo
+//True instalacion, False Equipo
+export const lastTypeManagementAction = bool => ({
+    type: storeConstants.MANAGEMENT_TYPE,
+    bool
+});
+
+/**
+ * Gestiones Anticipadas
+ */
+export const backImageAction = image => ({
+    type:storeConstants.BACK_IMAGE,
+    image
 });
 
 

@@ -12,13 +12,23 @@ class Home extends Component {
         super(props);
         this.state = {
             instalationName: this._updateTitle(props),
+            viewButton: this._updateArea(props),
+            showModalArea: false,
             list : props.listAllInstalations.filter(function(filterInst) {
-                if (props.nextInstalation === null){
+                if (props.nextInstalation === null) {
                     return filterInst.antes == null;
                 } else {
                     return filterInst.antes == props.nextInstalation.id;
                 }
             })
+        }
+    }
+
+    _updateArea = (props) => {
+        if (props.nextInstalation === null){
+            return true;
+        } else {
+            return false;
         }
     }
 
@@ -45,12 +55,24 @@ class Home extends Component {
                 source: 0,
             });
         }
+    }
 
+    _showAreaModal() {
+        this.setState({showModalArea:true});
+    }
 
+    _cancelModal = async () => {
+        this.setState({showModalArea:false});
     }
 
     render() {
         return <HomeView
+                    load ={false}
+                    areaView ={this.state.showModalArea}
+                    showAreaModal = {this._showAreaModal}
+                    cancelModal = {this._cancelModal()}
+ 
+                    viewButton = {this.state.viewButton}
                     list={this.state.list}
                     instalationName = {this.state.instalationName}
                     updateInstalation={(item) => this._updateInstalation(item)}/>

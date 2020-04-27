@@ -8,6 +8,7 @@ import HomeScreen from '../containers/Home';
 import SplashScreen from '../containers/Splash';
 import NewManagement from '../containers/NewManagement';
 import EquipManagement from '../containers/EquipManagement';
+import Photo from '../containers/Photo';
 
 const Stack = createStackNavigator();
 
@@ -20,6 +21,7 @@ function Routing() {
           <Stack.Screen name="Home" component={HomeScreen} options={{cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS}}/>
           <Stack.Screen name="NewManagement" component={NewManagement} options={{cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS}}/>
           <Stack.Screen name="EquipManagement" component={EquipManagement} options={{cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS}}/>
+          <Stack.Screen name="Photo" component={Photo} options={{cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS}} />
           <Stack.Screen name="Splash" component={SplashScreen}/>
         </Stack.Navigator>
       </NavigationContainer>

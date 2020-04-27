@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, SafeAreaView, StyleSheet, Image, Dimensions, KeyboardAvoidingView,StatusBar,Platform,TouchableOpacity} from 'react-native';
-import { Form, Item, Input, Label, ListItem, Icon, Button, CheckBox} from 'native-base';
+import { Form, Item, Input, Label, ListItem, Icon, Button, Radio, CheckBox} from 'native-base';
 
 import HeaderView from '../components/HeaderView';
 
@@ -22,16 +22,28 @@ const NewManagementView = props => {
               <Input style={style.inputForm} multiline={true} onChangeText={(observation) => props.changeTextObservation(observation)} value={props.observation}/>
           </Item>
 
-          <Item style={style.itemForm} onPress={props.chkbox_check}>
-            <CheckBox checked={props.chkbox_chk} />
-            <Text style={style.textCheckBox}>Solicito informe de aprobación previo a que se ejecute el trabajo.</Text>
+          <Text style={style.textCheckBox}>Solicito informe de aprobación previo a que se ejecute el trabajo.</Text>
+          
+          <Item style={style.radioGroup}>
+            <Radio selected={props.chkbox_chk1} onPress={props.chkbox_check1}/>
+            <Text style={style.textCheckBox}>Si</Text>
+
+            <Radio style={style.radio} selected={props.chkbox_chk2} onPress={props.chkbox_check2}/>
+            <Text style={style.textCheckBox}>No</Text>
           </Item>
 
           <View style={style.buttonView}>
-              <TouchableOpacity>
-                <Icon name="add-a-photo" type="MaterialIcons" style={style.iconItemPhoto} />
-              </TouchableOpacity>
-            <Button style={style.buttonIngresar} onPress={() => props.login()}>
+            <TouchableOpacity style={style.itemPhoto} onPress={() => props.goSetPhoto(1)} >
+                {props.photo1 === null ? 
+                    <Icon name="add-a-photo" type="MaterialIcons" style={style.iconItemPhoto} />
+                    :
+                    <View style={style.setActivoItemPhoto}>
+                        <Icon name="photo-camera" type="MaterialIcons" style={style.iconItemPhotoActive} />
+                        <Text style={style.textPhotoActive}>Foto Almacenada</Text>
+                    </View>
+                }
+            </TouchableOpacity>
+            <Button style={style.buttonIngresar} onPress={() => props.sendData()}>
                   <Text style={style.textButtonIngresar}>ENVIAR</Text>  
             </Button>
           </View>
@@ -43,15 +55,62 @@ const NewManagementView = props => {
 export default NewManagementView;
 
 const style = StyleSheet.create({
-  buttonView:{
-    marginTop:25,
+  buttonView: {
+    marginTop:50,
     backgroundColor:'#fff',
     flexDirection:'row',
     alignItems: 'center',
     justifyContent: 'center'
   },
+  radioGroup:{
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  radio:{
+    marginLeft: 30
+  },
+  itemPhoto:{
+    width:'40%',
+    height:120,
+    justifyContent:'center',
+    alignItems:'center',
+    position:'relative',
+    borderWidth:1,
+    borderRadius:10,
+    shadowColor: "#000",
+    backgroundColor:'#FFF',
+    shadowColor: "#000",
+    shadowOffset: {
+        width: 0,
+        height: 7,
+    },
+    shadowOpacity: 0.43,
+    shadowRadius: 9.51,
+
+    elevation: 15,
+  },
+  setActivoItemPhoto:{
+    height:'100%',
+    width:'100%',
+    alignItems:'center',
+    justifyContent:'center',
+    position:'absolute',
+    overflow:'hidden',
+    borderRadius:10  
+  },
+  textPhotoActive:{
+    width:'100%',
+    backgroundColor:'#135B84',
+    color:'#FFFFFF',
+    position:'absolute',
+    bottom:0,
+    left:0,
+    textAlign:'center',
+    fontSize:12,
+  },
   textCheckBox:{
-    marginLeft:20
+    marginLeft:20,
+    marginTop:40
   },
   iconItemPhoto:{
     fontSize:55
@@ -84,16 +143,20 @@ const style = StyleSheet.create({
       maxHeight: 300
   },
   buttonIngresar:{
+      borderRadius:100,
+      padding:20,
+      marginLeft:20,
       backgroundColor:'#135B84',
-      marginLeft:50,
-      width:160,
+      marginTop:70,
+      width:180,
+      height:50,
       justifyContent:'center',
       alignItems:'center',
       alignSelf:'center'
   },
   textButtonIngresar:{
       color:'#FFFFFF',
-      fontWeight:'900'
+      fontWeight:'bold'
   },
   buttonRegister:{
       fontSize:12,

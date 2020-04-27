@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, SafeAreaView, StyleSheet, Dimensions,StatusBar,Platform,FlatList, View} from 'react-native';
+import { Icon, Button } from 'native-base';
 
 import HeaderView from '../components/HeaderView';
 import EquipItemView from './EquipItemView';
@@ -18,7 +19,10 @@ const EquipManagementView = props => {
                 keyExtractor={item => item.id}
                 initialNumToRender={10}
                 ListFooterComponent={props.list.length > 0 ? <View style={{width,height:90}} /> : <Text style={style.messageCalendar}>{!props.load ? " No se encontró información para mostrar" : ""}</Text>}
-                /> 
+                />
+                <Button style={style.container_fab} onPress={() => props.updateInstalation()}>
+                    < Icon name="add" type="MaterialIcons" style={style.icon}/> 
+                </Button>
         </SafeAreaView>
     )
 }
@@ -27,6 +31,23 @@ const style = StyleSheet.create({
     container:{
         flex:1,
         backgroundColor:'#ffffff'
+    },
+    icon:{
+        fontSize:30,
+        color:'#FFFFFF'
+    },
+    container_fab:{
+        backgroundColor:'#135B84',
+        width:70,
+        height:70,
+        justifyContent:'center',
+        alignItems:'center',
+        margin: 30,
+        right: 10, 
+        bottom: 10,
+        borderRadius:100,
+        position: 'absolute',  
+        elevation: 8 
     },
     imagenBanner:{
         resizeMode:'contain',

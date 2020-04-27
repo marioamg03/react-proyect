@@ -130,6 +130,21 @@ function* sagaLogin(items) {
                 break;
 
                 default:
+                    if (body.message == "Unauthorized") {
+                        Toast.show({
+                            text: "Usuario o contraseña invalida",
+                            duration: 3000,
+                            type: "danger",
+                            buttonText: "Aceptar",
+                        });
+                    } else {
+                        Toast.show({
+                            text: "Error al iniciar sesion",
+                            duration: 3000,
+                            type: "danger",
+                            buttonText: "Aceptar",
+                        });
+                    }
                     yield put(loadAction(false));
                     break;
                 }
@@ -147,6 +162,75 @@ function* sagaLogin(items) {
     }
     //yield put(loadAction(false));
 }
+
+function* sagaSendData(items) {
+    try {
+
+        let response = undefined;
+        let token = yield call(getToken);
+        let netInfo = yield call(getNetInfo); 
+
+        if(netInfo)
+            response = yield call(request,apiConstants.sendData,items.data,'POST',{
+                "Content-Type" : 'application/json',
+                "Authorization" : token
+            });
+            console.log(response)
+
+        if(response === undefined) {
+            Toast.show({
+                text: "Error al enviar la mantencion",
+                duration: 6000,
+                type: "danger",
+                buttonText: "Aceptar",
+            });
+
+    } else {
+        let {status, body} = response;
+            switch(status) {
+                case 200:
+                    Toast.show({
+                        text: "Datos enviados exitosamente!",
+                        duration: 3000,
+                        type: "success",
+                        buttonText: "Aceptar",
+                    });
+
+                break;
+                case 403:
+                    Toast.show({
+                        text: body.message,
+                        duration: 3000,
+                        type: "warning",
+                        buttonText: "Aceptar",
+                    });
+                break;
+
+                default:
+                    Toast.show({
+                        text: "Error al enviar la data",
+                        duration: 3000,
+                        type: "danger",
+                        buttonText: "Aceptar",
+                    });
+                    break;
+                }
+            }
+
+    } catch(e) {
+        Toast.show({
+            text: "Error a realizar la consulta, comuníquese con soporte tecnico.",
+            duration: 3000,
+            type: "warning",
+            buttonText: "Aceptar",
+        });
+        yield put(loadAction(false));
+        //firebase.crashlytics().log(e);
+    }
+    //yield put(loadAction(false));
+}
+
+
 
 function* sagaLogout(){
     yield put(loadAction(true));
@@ -240,6 +324,7 @@ function* sagaInitLoad(item){
 
 export default function* Generator() {
     yield takeEvery(sagasConstants.LOGIN,sagaLogin);
+    yield takeEvery(sagasConstants.SENDDATA_REACT,sagaSendData);
     yield takeEvery(sagasConstants.LOGOUT,sagaLogout);
     yield takeEvery(sagasConstants.INIT_LOAD,sagaInitLoad);
 }

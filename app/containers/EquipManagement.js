@@ -5,7 +5,7 @@ import EquipManagementView from '../components/EquipManagementView';
 
 
 //Redux
-import {loadAction, lastEquipManagementAction} from '../redux/actions/Actions';
+import {loadAction, lastEquipManagementAction, lastTypeManagementAction} from '../redux/actions/Actions';
 
 class Home extends Component {
 
@@ -21,18 +21,24 @@ class Home extends Component {
                 }
             })
         }
-
-        console.log(this.state.list)
-
     }
 
     _updateTitle = (props) => {
         return props.nextInstalation.name;
     }
 
-
     _updateEquip = (item) => {
         this.props.handleNextEquipManagement(item);
+        this.props.handleLastTypeManagement(false);
+        this.props.navigation.dispatch({
+                ...StackActions.push('NewManagement'),
+                source: 0,
+        });
+    }
+
+    _updateInstalation = () => {
+        this.props.handleNextEquipManagement(null);
+        this.props.handleLastTypeManagement(true);
         this.props.navigation.dispatch({
                 ...StackActions.push('NewManagement'),
                 source: 0,
@@ -43,7 +49,8 @@ class Home extends Component {
         return <EquipManagementView
                     list={this.state.list}
                     instalationName = {this.state.instalationName}
-                    updateEquip={(item) => this._updateEquip(item)}/>
+                    updateEquip={(item) => this._updateEquip(item)}
+                    updateInstalation={() => this._updateInstalation()}/>
     }
 }
 
@@ -60,6 +67,9 @@ const mapDispatchToProps = dispatch => ({
     },
     handleNextEquipManagement:data => {
         dispatch(lastEquipManagementAction(data));
+    },
+    handleLastTypeManagement:(bool) => {
+        dispatch(lastTypeManagementAction(bool));
     }
 })
 

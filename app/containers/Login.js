@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {Toast} from 'native-base';
 import { StackActions } from '@react-navigation/native';
 import LoginView from '../components/LoginView';
 
@@ -24,6 +25,13 @@ class Login extends Component {
                 rut:this.state.user,
                 password:this.state.password
             })
+        } else {
+            Toast.show({
+                text: "Debes introducir todos los campos.",
+                duration: 3000,
+                type: "warning",
+                buttonText: "Aceptar",
+            });
         }
     }
 
